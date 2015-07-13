@@ -1,5 +1,6 @@
 package org.mtransit.parser.ca_welland_transit_bus;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -81,7 +82,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public boolean excludeRoute(GRoute gRoute) {
-		if (!gRoute.agency_id.equals(WELLAND_TRANSIT)) {
+		if (!WELLAND_TRANSIT.equals(gRoute.agency_id)) {
 			return true;
 		}
 		return super.excludeRoute(gRoute);
@@ -363,7 +364,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 	}
 
 	@Override
-	public HashSet<MTrip> splitTrip(MRoute mRoute, GTrip gTrip, GSpec gtfs) {
+	public ArrayList<MTrip> splitTrip(MRoute mRoute, GTrip gTrip, GSpec gtfs) {
 		if (ALL_ROUTE_TRIPS2.containsKey(mRoute.id)) {
 			return ALL_ROUTE_TRIPS2.get(mRoute.id).getAllTrips();
 		}
@@ -373,7 +374,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 	}
 
 	@Override
-	public Pair<Long[], Integer[]> splitTripStop(MRoute mRoute, GTrip gTrip, GTripStop gTripStop, HashSet<MTrip> splitTrips, GSpec routeGTFS) {
+	public Pair<Long[], Integer[]> splitTripStop(MRoute mRoute, GTrip gTrip, GTripStop gTripStop, ArrayList<MTrip> splitTrips, GSpec routeGTFS) {
 		if (ALL_ROUTE_TRIPS2.containsKey(mRoute.id)) {
 			RouteTripSpec rts = ALL_ROUTE_TRIPS2.get(mRoute.id);
 			return SplitUtils.splitTripStop(mRoute, gTrip, gTripStop, routeGTFS, //
