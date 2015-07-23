@@ -82,7 +82,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public boolean excludeRoute(GRoute gRoute) {
-		if (!WELLAND_TRANSIT.equals(gRoute.agency_id)) {
+		if (!WELLAND_TRANSIT.equals(gRoute.getAgencyId())) {
 			return true;
 		}
 		return super.excludeRoute(gRoute);
@@ -107,21 +107,21 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public long getRouteId(GRoute gRoute) {
-		if (R_WE_NF.equals(gRoute.route_id)) {
+		if (R_WE_NF.equals(gRoute.getRouteId())) {
 			return 14001l;
-		} else if (R_WE_NOTL.equals(gRoute.route_id)) {
+		} else if (R_WE_NOTL.equals(gRoute.getRouteId())) {
 			return 14002l;
-		} else if (R_PC001.equals(gRoute.route_id)) {
+		} else if (R_PC001.equals(gRoute.getRouteId())) {
 			return R_PC001_ID;
-		} else if (R_PC002.equals(gRoute.route_id)) {
+		} else if (R_PC002.equals(gRoute.getRouteId())) {
 			return R_PC002_ID;
-		} else if (R_WEPC.equals(gRoute.route_id)) {
+		} else if (R_WEPC.equals(gRoute.getRouteId())) {
 			return R_WEPC_ID;
-		} else if (R_WESC.equals(gRoute.route_id)) {
+		} else if (R_WESC.equals(gRoute.getRouteId())) {
 			return 19001l;
-		} else if (gRoute.route_id.startsWith(R_WE0)) {
-			if (gRoute.route_short_name != null && gRoute.route_short_name.length() > 0 && Utils.isDigitsOnly(gRoute.route_short_name)) {
-				return Long.valueOf(gRoute.route_short_name); // using route short name as route ID
+		} else if (gRoute.getRouteId().startsWith(R_WE0)) {
+			if (gRoute.getRouteShortName() != null && gRoute.getRouteShortName().length() > 0 && Utils.isDigitsOnly(gRoute.getRouteShortName())) {
+				return Long.valueOf(gRoute.getRouteShortName()); // using route short name as route ID
 			}
 		}
 		System.out.printf("\nUnexpected route ID for %s!\n", gRoute);
@@ -138,21 +138,21 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public String getRouteShortName(GRoute gRoute) {
-		if (R_WE_NF.equals(gRoute.route_id)) {
+		if (R_WE_NF.equals(gRoute.getRouteId())) {
 			return NF;
-		} else if (R_WE_NOTL.equals(gRoute.route_id)) {
+		} else if (R_WE_NOTL.equals(gRoute.getRouteId())) {
 			return NOTL;
-		} else if (R_PC001.equals(gRoute.route_id)) {
+		} else if (R_PC001.equals(gRoute.getRouteId())) {
 			return PC1EAST;
-		} else if (R_PC002.equals(gRoute.route_id)) {
+		} else if (R_PC002.equals(gRoute.getRouteId())) {
 			return PC2WEST;
-		} else if (R_WEPC.equals(gRoute.route_id)) {
+		} else if (R_WEPC.equals(gRoute.getRouteId())) {
 			return PCL;
-		} else if (R_WESC.equals(gRoute.route_id)) {
+		} else if (R_WESC.equals(gRoute.getRouteId())) {
 			return BL;
-		} else if (gRoute.route_id.startsWith(R_WE0)) {
-			if (gRoute.route_short_name != null && gRoute.route_short_name.length() > 0 && Utils.isDigitsOnly(gRoute.route_short_name)) {
-				return gRoute.route_short_name;
+		} else if (gRoute.getRouteId().startsWith(R_WE0)) {
+			if (gRoute.getRouteShortName() != null && gRoute.getRouteShortName().length() > 0 && Utils.isDigitsOnly(gRoute.getRouteShortName())) {
+				return gRoute.getRouteShortName();
 			}
 		}
 		System.out.printf("\nUnexpected route short name for %s!\n", gRoute);
@@ -168,7 +168,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public String getRouteLongName(GRoute gRoute) {
-		String routeLongName = gRoute.route_long_name;
+		String routeLongName = gRoute.getRouteLongName();
 		routeLongName = POINT.matcher(routeLongName).replaceAll(POINT_REPLACEMENT);
 		routeLongName = POINTS.matcher(routeLongName).replaceAll(POINTS_REPLACEMENT);
 		routeLongName = CleanUtils.cleanNumbers(routeLongName);
@@ -201,21 +201,21 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public String getRouteColor(GRoute gRoute) {
-		if (R_WE_NF.equals(gRoute.route_id)) {
+		if (R_WE_NF.equals(gRoute.getRouteId())) {
 			return null;
-		} else if (R_WE_NOTL.equals(gRoute.route_id)) {
+		} else if (R_WE_NOTL.equals(gRoute.getRouteId())) {
 			return null;
-		} else if (R_PC001.equals(gRoute.route_id)) {
+		} else if (R_PC001.equals(gRoute.getRouteId())) {
 			return COLOR_F8A08A; // COLOR_ED1C24;
-		} else if (R_PC002.equals(gRoute.route_id)) {
+		} else if (R_PC002.equals(gRoute.getRouteId())) {
 			return COLOR_A0C2E9; // COLOR_127BCA;
-		} else if (R_WEPC.equals(gRoute.route_id)) {
+		} else if (R_WEPC.equals(gRoute.getRouteId())) {
 			return COLOR_9E50AE;
-		} else if (R_WESC.equals(gRoute.route_id)) {
+		} else if (R_WESC.equals(gRoute.getRouteId())) {
 			return null;
-		} else if (gRoute.route_id.startsWith(R_WE0)) {
-			if (gRoute.route_short_name != null && gRoute.route_short_name.length() > 0 && Utils.isDigitsOnly(gRoute.route_short_name)) {
-				int rsn = Integer.parseInt(gRoute.route_short_name);
+		} else if (gRoute.getRouteId().startsWith(R_WE0)) {
+			if (gRoute.getRouteShortName() != null && gRoute.getRouteShortName().length() > 0 && Utils.isDigitsOnly(gRoute.getRouteShortName())) {
+				int rsn = Integer.parseInt(gRoute.getRouteShortName());
 				switch (rsn) {
 				// @formatter:off
 				case 1: return COLOR_ED1C24;
@@ -376,15 +376,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 	@Override
 	public Pair<Long[], Integer[]> splitTripStop(MRoute mRoute, GTrip gTrip, GTripStop gTripStop, ArrayList<MTrip> splitTrips, GSpec routeGTFS) {
 		if (ALL_ROUTE_TRIPS2.containsKey(mRoute.id)) {
-			RouteTripSpec rts = ALL_ROUTE_TRIPS2.get(mRoute.id);
-			return SplitUtils.splitTripStop(mRoute, gTrip, gTripStop, routeGTFS, //
-					rts.getBeforeAfterStopIds(0), //
-					rts.getBeforeAfterStopIds(1), //
-					rts.getBeforeAfterBothStopIds(0), //
-					rts.getBeforeAfterBothStopIds(1), //
-					rts.getTripId(0), //
-					rts.getTripId(1), //
-					rts.getAllBeforeAfterStopIds());
+			return SplitUtils.splitTripStop(mRoute, gTrip, gTripStop, routeGTFS, ALL_ROUTE_TRIPS2.get(mRoute.id));
 		}
 		System.out.printf("\n%s: Unexptected split trip stop route!\n", mRoute.id);
 		System.exit(-1);
@@ -471,7 +463,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public int getStopId(GStop gStop) {
-		String stopCode = gStop.stop_code;
+		String stopCode = gStop.getStopCode();
 		if (stopCode == null || stopCode.length() == 0 || ZERO_0.equals(stopCode)) {
 			stopCode = gStop.getStopId();
 		}
