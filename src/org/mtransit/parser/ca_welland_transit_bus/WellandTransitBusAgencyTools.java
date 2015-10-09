@@ -365,20 +365,20 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public ArrayList<MTrip> splitTrip(MRoute mRoute, GTrip gTrip, GSpec gtfs) {
-		if (ALL_ROUTE_TRIPS2.containsKey(mRoute.id)) {
-			return ALL_ROUTE_TRIPS2.get(mRoute.id).getAllTrips();
+		if (ALL_ROUTE_TRIPS2.containsKey(mRoute.getId())) {
+			return ALL_ROUTE_TRIPS2.get(mRoute.getId()).getAllTrips();
 		}
-		System.out.printf("\n%s: Unexpected split trip route!\n", mRoute.id);
+		System.out.printf("\n%s: Unexpected split trip route!\n", mRoute.getId());
 		System.exit(-1);
 		return null;
 	}
 
 	@Override
 	public Pair<Long[], Integer[]> splitTripStop(MRoute mRoute, GTrip gTrip, GTripStop gTripStop, ArrayList<MTrip> splitTrips, GSpec routeGTFS) {
-		if (ALL_ROUTE_TRIPS2.containsKey(mRoute.id)) {
-			return SplitUtils.splitTripStop(mRoute, gTrip, gTripStop, routeGTFS, ALL_ROUTE_TRIPS2.get(mRoute.id));
+		if (ALL_ROUTE_TRIPS2.containsKey(mRoute.getId())) {
+			return SplitUtils.splitTripStop(mRoute, gTrip, gTripStop, routeGTFS, ALL_ROUTE_TRIPS2.get(mRoute.getId()));
 		}
-		System.out.printf("\n%s: Unexptected split trip stop route!\n", mRoute.id);
+		System.out.printf("\n%s: Unexptected split trip stop route!\n", mRoute.getId());
 		System.exit(-1);
 		return null;
 	}
@@ -386,10 +386,10 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public void setTripHeadsign(MRoute mRoute, MTrip mTrip, GTrip gTrip, GSpec gtfs) {
-		if (ALL_ROUTE_TRIPS2.containsKey(mRoute.id)) {
+		if (ALL_ROUTE_TRIPS2.containsKey(mRoute.getId())) {
 			return; // split
 		}
-		System.out.printf("\n%s: Unexptected trip %s!", mRoute.id, gTrip);
+		System.out.printf("\n%s: Unexptected trip %s!", mRoute.getId(), gTrip);
 		System.exit(-1);
 		return;
 	}
