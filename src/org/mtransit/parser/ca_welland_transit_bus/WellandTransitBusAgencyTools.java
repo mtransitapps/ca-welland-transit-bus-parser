@@ -121,7 +121,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 			return 19001l;
 		} else if (gRoute.getRouteId().startsWith(R_WE0)) {
 			if (gRoute.getRouteShortName() != null && gRoute.getRouteShortName().length() > 0 && Utils.isDigitsOnly(gRoute.getRouteShortName())) {
-				return Long.valueOf(gRoute.getRouteShortName()); // using route short name as route ID
+				return Long.parseLong(gRoute.getRouteShortName()); // using route short name as route ID
 			}
 		}
 		System.out.printf("\nUnexpected route ID for %s!\n", gRoute);
@@ -286,6 +286,14 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 				.addTripSort(MDirectionType.WEST.intValue(), //
 						Arrays.asList(new String[] { "WE0", "WE004_01", "WE137" })) //
 				.compileBothTripSort());
+		map2.put(5l, new RouteTripSpec(5l, //
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, DOWNTOWN_TERMINAL, //
+				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Community Living") //
+				.addTripSort(MDirectionType.NORTH.intValue(), //
+						Arrays.asList(new String[] { "WE_397", "WE_410", "WE_423" })) //
+				.addTripSort(MDirectionType.SOUTH.intValue(), //
+						Arrays.asList(new String[] { "WE_423", "WE_426", "WE_397" })) //
+				.compileBothTripSort());
 		map2.put(6l, new RouteTripSpec(6l, //
 				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, DOWNTOWN_TERMINAL, //
 				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, SOUTHWORTH_GORDON) //
@@ -325,6 +333,22 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 						Arrays.asList(new String[] { "WE27", "WE188", "WE0" })) //
 				.addTripSort(MDirectionType.SOUTH.intValue(), //
 						Arrays.asList(new String[] { "WE0", "WE7", "WE22", "WE27" })) //
+				.compileBothTripSort());
+		map2.put(14002l, new RouteTripSpec(14002l, // R_WE_NOTL Niagara-on-the-Lake Link
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, WELLAND, //
+				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, NOTL) //
+				.addTripSort(MDirectionType.NORTH.intValue(), //
+						Arrays.asList(new String[] { "NOTL1", "WE75" })) //
+				.addTripSort(MDirectionType.SOUTH.intValue(), //
+						Arrays.asList(new String[] { "WE75", "NOTL1" })) //
+				.compileBothTripSort());
+		map2.put(19001l, new RouteTripSpec(19001l, // R_WESC Brock Link
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, NIAGARA_COLLEGE, //
+				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Brock U") //
+				.addTripSort(MDirectionType.NORTH.intValue(), //
+						Arrays.asList(new String[] { "25", "WE75"/* , "WE0" */})) //
+				.addTripSort(MDirectionType.SOUTH.intValue(), //
+						Arrays.asList(new String[] { "WE0", "WE75", "25" })) //
 				.compileBothTripSort());
 		map2.put(R_WEPC_ID, new RouteTripSpec(R_WEPC_ID, // Port Colborne - Welland Link
 				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, WELLAND, //
@@ -368,7 +392,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 		if (ALL_ROUTE_TRIPS2.containsKey(mRoute.getId())) {
 			return ALL_ROUTE_TRIPS2.get(mRoute.getId()).getAllTrips();
 		}
-		System.out.printf("\n%s: Unexpected split trip route!\n", mRoute.getId());
+		System.out.printf("\n%s: Unexpected trip to split %s!\n", mRoute.getId(), gTrip);
 		System.exit(-1);
 		return null;
 	}
@@ -378,7 +402,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 		if (ALL_ROUTE_TRIPS2.containsKey(mRoute.getId())) {
 			return SplitUtils.splitTripStop(mRoute, gTrip, gTripStop, routeGTFS, ALL_ROUTE_TRIPS2.get(mRoute.getId()));
 		}
-		System.out.printf("\n%s: Unexptected split trip stop route!\n", mRoute.getId());
+		System.out.printf("\n%s: Unexpected trip to split %s!\n", mRoute.getId(), gTrip);
 		System.exit(-1);
 		return null;
 	}
@@ -508,5 +532,4 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 		System.exit(-1);
 		return -1;
 	}
-
 }
