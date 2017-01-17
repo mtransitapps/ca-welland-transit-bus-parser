@@ -31,6 +31,7 @@ import org.mtransit.parser.mt.data.MTripStop;
 // http://www.niagararegion.ca/government/opendata/data-set.aspx#id=32
 // http://www.niagararegion.ca/government/opendata/data-set.aspx#id=32&tab=data_table&f=xml&r=500&p=1
 // http://maps-dev.niagararegion.ca/GoogleTransit/NiagaraRegionTransit.zip
+// https://maps-beta.niagararegion.ca/Transit/Production/NiagaraRegionTransit.zip
 public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 
 	public static void main(String[] args) {
