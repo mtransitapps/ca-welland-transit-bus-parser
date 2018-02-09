@@ -84,7 +84,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 	@Override
 	public boolean excludeRoute(GRoute gRoute) {
 		if (!WELLAND_TRANSIT.equals(gRoute.getAgencyId()) //
-				&& !"WE_F17Welland Transit".equals(gRoute.getAgencyId())) {
+				&& !"WE_W18_Welland Transit".equals(gRoute.getAgencyId())) {
 			return true;
 		}
 		return super.excludeRoute(gRoute);
@@ -216,7 +216,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 	private static final String PC_MALL = "PC Mall";
 	private static final String CITY_HALL = "City Hall";
 
-	private static final String STOP_ = "WE_F17";
+	private static final String STOP_ = "WE_W18_";
 
 	private static final String STOP_3005 = STOP_ + "Stop" + "3005";
 	private static final String STOP_3015 = STOP_ + "Stop" + "3015";
@@ -512,7 +512,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 	@Override
 	public int compareEarly(long routeId, List<MTripStop> list1, List<MTripStop> list2, MTripStop ts1, MTripStop ts2, GStop ts1GStop, GStop ts2GStop) {
 		if (ALL_ROUTE_TRIPS2.containsKey(routeId)) {
-			return ALL_ROUTE_TRIPS2.get(routeId).compare(routeId, list1, list2, ts1, ts2, ts1GStop, ts2GStop);
+			return ALL_ROUTE_TRIPS2.get(routeId).compare(routeId, list1, list2, ts1, ts2, ts1GStop, ts2GStop, this);
 		}
 		System.out.printf("\n%s: Unexpected compare early route!\n", routeId);
 		System.exit(-1);
@@ -532,7 +532,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 	@Override
 	public Pair<Long[], Integer[]> splitTripStop(MRoute mRoute, GTrip gTrip, GTripStop gTripStop, ArrayList<MTrip> splitTrips, GSpec routeGTFS) {
 		if (ALL_ROUTE_TRIPS2.containsKey(mRoute.getId())) {
-			return SplitUtils.splitTripStop(mRoute, gTrip, gTripStop, routeGTFS, ALL_ROUTE_TRIPS2.get(mRoute.getId()));
+			return SplitUtils.splitTripStop(mRoute, gTrip, gTripStop, routeGTFS, ALL_ROUTE_TRIPS2.get(mRoute.getId()), this);
 		}
 		System.out.printf("\n%s: Unexpected trip to split %s!\n", mRoute.getId(), gTrip);
 		System.exit(-1);
@@ -664,8 +664,6 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 			return 9000010;
 		} else if (stopCode.equals("LIO")) {
 			return 9000011;
-		} else if (stopCode.equals("LIP")) {
-			return 9000012;
 		} else if (stopCode.equals("NCC")) {
 			return 9000012;
 		} else if (stopCode.equals("NIE")) {
@@ -700,6 +698,10 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 			return 9000027;
 		} else if (stopCode.equals("WWA")) {
 			return 9000028;
+		} else if (stopCode.equals("LIP")) {
+			return 9000029;
+		} else if (stopCode.equals("XXXX")) {
+			return 9000030;
 		}
 		try {
 			Matcher matcher = DIGITS.matcher(stopCode);
