@@ -79,12 +79,11 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 		return super.excludeTrip(gTrip);
 	}
 
-	private static final String WELLAND_TRANSIT = "WE";
+	private static final String WE_ = "WE_";
 
 	@Override
 	public boolean excludeRoute(GRoute gRoute) {
-		if (!WELLAND_TRANSIT.equals(gRoute.getAgencyId()) //
-				&& !"WE_W18_Welland Transit".equals(gRoute.getAgencyId())) {
+		if (!gRoute.getAgencyId().startsWith(WE_)) {
 			return true;
 		}
 		return super.excludeRoute(gRoute);
@@ -216,7 +215,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 	private static final String PC_MALL = "PC Mall";
 	private static final String CITY_HALL = "City Hall";
 
-	private static final String STOP_ = "WE_W18_";
+	private static final String STOP_ = "WE_S18_";
 
 	private static final String STOP_3005 = STOP_ + "Stop" + "3005";
 	private static final String STOP_3015 = STOP_ + "Stop" + "3015";
