@@ -162,355 +162,288 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 		return AGENCY_COLOR;
 	}
 
-	private static final String COLOR_A0C2E9 = "A0C2E9";
-	private static final String COLOR_F8A08A = "F8A08A";
-	private static final String COLOR_9E50AE = "9E50AE";
-	private static final String COLOR_ED1C24 = "ED1C24";
-	private static final String COLOR_A05843 = "A05843";
-	private static final String COLOR_00A990 = "00A990";
-	private static final String COLOR_2E3192 = "2E3192";
-	private static final String COLOR_7B2178 = "7B2178";
-	private static final String COLOR_19B5F1 = "19B5F1";
-	private static final String COLOR_EC008C = "EC008C";
-	private static final String COLOR_127BCA = "127BCA";
-	private static final String COLOR_F7903F = "F7903F";
-	private static final String COLOR_8CA2D7 = "8CA2D7";
-
 	@Override
 	public String getRouteColor(GRoute gRoute) {
 		if (gRoute.getRouteShortName() != null && gRoute.getRouteShortName().length() > 0 && Utils.isDigitsOnly(gRoute.getRouteShortName())) {
 			int rsn = Integer.parseInt(gRoute.getRouteShortName());
 			switch (rsn) {
 			// @formatter:off
-			case 1: return COLOR_ED1C24;
-			case 2: return COLOR_A05843;
-			case 3: return COLOR_00A990;
-			case 4: return COLOR_2E3192;
-			case 5: return COLOR_7B2178;
-			case 6: return COLOR_19B5F1;
-			case 8: return COLOR_EC008C;
-			case 9: return COLOR_127BCA;
-			case 10: return COLOR_F7903F; // "ED1C24";
-			case 11: return COLOR_8CA2D7; // "2E3192";
-			case 100: return COLOR_9E50AE;
-			case 101: return COLOR_F8A08A; // COLOR_ED1C24;
-			case 102: return COLOR_A0C2E9; // COLOR_127BCA;
-			case 214: return null;
-			case 215: return null;
+			case 23: return "2B6ABC";
+			case 25: return "9E50AE";
+			case 34: return "2B6ABC";
+			case 501: return "ED1C24";
+			case 502: return "A05843";
+			case 503: return "00A990";
+			case 504: return "2E3192";
+			case 505: return "7B2178";
+			case 506: return "19B5F1";
+			case 508: return "EC008C";
+			case 509: return "127BCA";
+			case 510: return "ED1C24";
+			case 511: return "2E3192";
+			case 701: return "ED1C24";
+			case 702: return "127BCA";
 			// @formatter:on
 			}
-
 		}
 		System.out.printf("\nUnexpected route color for %s!\n", gRoute);
 		System.exit(-1);
 		return null;
 	}
 
-	private static final String ST_GEORGE_ROACH = "St George / Roach";
-	private static final String WOODLAWN_S_PELHAM = "Woodlawn / S Pelham";
-	private static final String SOUTHWORTH_GORDON = "Southworth / Gordon";
-	private static final String SEAWAY_MALL = "Seaway Mall";
-	private static final String NIAGARA_COLLEGE = "Niagara College";
-	private static final String DOWNTOWN_TERMINAL = "Downtown Terminal";
-	private static final String COMMUNITY_LIVING = "Community Living";
-	private static final String HOSPITAL = "Hospital";
-	private static final String WELLAND = "Welland";
-	private static final String PORT_COLBORNE = "Port Colborne";
-	private static final String COLBORNE_MC_RAE = "Colborne / McRae";
-	private static final String PC_MALL = "PC Mall";
-	private static final String CITY_HALL = "City Hall";
-
-	private static final String STOP_ = "WE_S18_";
-
-	private static final String STOP_3005 = STOP_ + "Stop" + "3005";
-	private static final String STOP_3015 = STOP_ + "Stop" + "3015";
-	private static final String STOP_3031 = STOP_ + "Stop" + "3031";
-	private static final String STOP_3051 = STOP_ + "Stop" + "3051";
-	private static final String STOP_3066 = STOP_ + "Stop" + "3066";
-	private static final String STOP_3071 = STOP_ + "Stop" + "3071";
-	private static final String STOP_3076 = STOP_ + "Stop" + "3076";
-
-	private static final String STOP_4004 = STOP_ + "Stop" + "4004";
-	private static final String STOP_4010 = STOP_ + "Stop" + "4010";
-	private static final String STOP_4029 = STOP_ + "Stop" + "4029";
-	private static final String STOP_4046 = STOP_ + "Stop" + "4046";
-	private static final String STOP_4047 = STOP_ + "Stop" + "4047";
-	private static final String STOP_4061 = STOP_ + "Stop" + "4061";
-	private static final String STOP_4077 = STOP_ + "Stop" + "4077";
-	private static final String STOP_4078 = STOP_ + "Stop" + "4078";
-	private static final String STOP_4102 = STOP_ + "Stop" + "4102";
-	private static final String STOP_4146 = STOP_ + "Stop" + "4146";
-	private static final String STOP_4165 = STOP_ + "Stop" + "4165";
-	private static final String STOP_4181 = STOP_ + "Stop" + "4181";
-	private static final String STOP_4191 = STOP_ + "Stop" + "4191";
-	private static final String STOP_4111 = STOP_ + "Stop" + "4111";
-	private static final String STOP_4198 = STOP_ + "Stop" + "4198";
-	private static final String STOP_4205 = STOP_ + "Stop" + "4205";
-	private static final String STOP_4224 = STOP_ + "Stop" + "4224";
-	private static final String STOP_4227 = STOP_ + "Stop" + "4227";
-	private static final String STOP_4238 = STOP_ + "Stop" + "4238";
-	private static final String STOP_4249 = STOP_ + "Stop" + "4249";
-
-	private static final String STOP_AQE = STOP_ + "AQE";
-	private static final String STOP_BRU = STOP_ + "BRU";
-	private static final String STOP_FIN = STOP_ + "FIN";
-	private static final String STOP_KIO = STOP_ + "KIO";
-	private static final String STOP_LIO = STOP_ + "LIO";
-	private static final String STOP_NCC = STOP_ + "NCC";
-	private static final String STOP_PCH = STOP_ + "PCH";
-	private static final String STOP_SGR = STOP_ + "SGR";
-	private static final String STOP_WOS = STOP_ + "WOS";
-	private static final String STOP_WPC = STOP_ + "WPC";
-
-	private static final String STOP_GLND_CMPS = STOP_ + "GlndCmps";
-	private static final String STOP_SEWAY_MAL = STOP_ + "SewayMal";
-	private static final String STOP_WELLAND = STOP_ + "Welland";
-	private static final String STOP_WIND_CAMP = STOP_ + "WlndCamp";
 
 	private static HashMap<Long, RouteTripSpec> ALL_ROUTE_TRIPS2;
 	static {
 		HashMap<Long, RouteTripSpec> map2 = new HashMap<Long, RouteTripSpec>();
-		map2.put(1l, new RouteTripSpec(1l, //
-				MDirectionType.EAST.intValue(), MTrip.HEADSIGN_TYPE_STRING, DOWNTOWN_TERMINAL, //
-				MDirectionType.WEST.intValue(), MTrip.HEADSIGN_TYPE_STRING, ST_GEORGE_ROACH) //
-				.addTripSort(MDirectionType.EAST.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_SGR, // St. George St & Roach Av
-								STOP_4046, // ++
-								STOP_WELLAND, // Welland Bus Terminal
-						})) //
-				.addTripSort(MDirectionType.WEST.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_WELLAND, // Welland Bus Terminal
-								STOP_LIO, // ++
-								STOP_SGR, // St. George St & Roach Av
-						})) //
-				.compileBothTripSort());
-		map2.put(2l, new RouteTripSpec(2l, //
-				MDirectionType.EAST.intValue(), MTrip.HEADSIGN_TYPE_STRING, DOWNTOWN_TERMINAL, //
-				MDirectionType.WEST.intValue(), MTrip.HEADSIGN_TYPE_STRING, NIAGARA_COLLEGE) //
-				.addTripSort(MDirectionType.EAST.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_NCC, // Niagara College Welland - Chippa
-								STOP_4078, // ++
-								STOP_WELLAND, // Welland Bus Terminal
-						})) //
-				.addTripSort(MDirectionType.WEST.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_WELLAND, // Welland Bus Terminal
-								STOP_4061, // ++
-								STOP_NCC, // Niagara College Welland - Chippa
-						})) //
-				.compileBothTripSort());
-		map2.put(3l, new RouteTripSpec(3l, //
-				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, NIAGARA_COLLEGE, //
-				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, DOWNTOWN_TERMINAL) //
-				.addTripSort(MDirectionType.NORTH.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_WELLAND, // Welland Bus Terminal
-								STOP_FIN, // ++
-								STOP_WIND_CAMP, // Woodlawn Road #NiagaraCollege
-						})) //
-				.addTripSort(MDirectionType.SOUTH.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_WIND_CAMP, // Woodlawn Road #NiagaraCollege
-								STOP_4102, // ++
-								STOP_WELLAND, // Welland Bus Terminal
-						})) //
-				.compileBothTripSort());
-		map2.put(4l, new RouteTripSpec(4l, //
-				MDirectionType.EAST.intValue(), MTrip.HEADSIGN_TYPE_STRING, DOWNTOWN_TERMINAL, //
-				MDirectionType.WEST.intValue(), MTrip.HEADSIGN_TYPE_STRING, WOODLAWN_S_PELHAM) //
-				.addTripSort(MDirectionType.EAST.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_WOS, // Woodlawn Rd & South Pelham Rd
-								STOP_AQE, // ++
-								STOP_WELLAND, // Welland Bus Terminal
-						})) //
-				.addTripSort(MDirectionType.WEST.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_WELLAND, // Welland Bus Terminal
-								STOP_4111, // ++
-								STOP_WOS, // Woodlawn Rd & South Pelham Rd
-						})) //
-				.compileBothTripSort());
-		map2.put(5l, new RouteTripSpec(5l, //
-				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, DOWNTOWN_TERMINAL, //
-				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, COMMUNITY_LIVING) //
-				.addTripSort(MDirectionType.NORTH.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_WPC, // Welland Pelham Community Living
-								STOP_4165, // ++
-								STOP_WELLAND, // Welland Bus Terminal
-						})) //
-				.addTripSort(MDirectionType.SOUTH.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_WELLAND, // Welland Bus Terminal
-								STOP_4146, // ++
-								STOP_WPC, // Welland Pelham Community Living
-						})) //
-				.compileBothTripSort());
-		map2.put(6l, new RouteTripSpec(6l, //
-				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, DOWNTOWN_TERMINAL, //
-				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, SOUTHWORTH_GORDON) //
-				.addTripSort(MDirectionType.NORTH.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_4191, // Gordon St & Southworth St
-								STOP_4205, // ++
-								STOP_WELLAND, // Welland Bus Terminal
-						})) //
-				.addTripSort(MDirectionType.SOUTH.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_WELLAND, // Welland Bus Terminal
-								STOP_KIO, // ++
-								STOP_4191, // Gordon St & Southworth St
-						})) //
-				.compileBothTripSort());
-		map2.put(8l, new RouteTripSpec(8l, //
-				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, NIAGARA_COLLEGE, //
-				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, DOWNTOWN_TERMINAL) //
-				.addTripSort(MDirectionType.NORTH.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_WELLAND, // Welland Bus Terminal
-								STOP_4224, // ++
-								STOP_WIND_CAMP, // Woodlawn Road #NiagaraCollege
-						})) //
-				.addTripSort(MDirectionType.SOUTH.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_WIND_CAMP, // Woodlawn Road #NiagaraCollege
-								STOP_4227, // ++
-								STOP_WELLAND, // Welland Bus Terminal
-						})) //
-				.compileBothTripSort());
-		map2.put(9l, new RouteTripSpec(9l, //
-				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, SEAWAY_MALL, //
-				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, DOWNTOWN_TERMINAL) //
-				.addTripSort(MDirectionType.NORTH.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_WELLAND, // Welland Bus Terminal
-								STOP_4238, // ++
-								STOP_SEWAY_MAL, // Seaway Mall
-						})) //
-				.addTripSort(MDirectionType.SOUTH.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_SEWAY_MAL, // Seaway Mall
-								STOP_4249, // ++
-								STOP_WELLAND, // Welland Bus Terminal
-						})) //
-				.compileBothTripSort());
-		map2.put(10l, new RouteTripSpec(10l, //
-				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, NIAGARA_COLLEGE, //
-				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, DOWNTOWN_TERMINAL) //
-				.addTripSort(MDirectionType.NORTH.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_WELLAND, // Welland Bus Terminal
-								STOP_4224, // ++
-								STOP_WIND_CAMP, // Woodlawn Road #NiagaraCollege
-						})) //
-				.addTripSort(MDirectionType.SOUTH.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_WIND_CAMP, // Woodlawn Road #NiagaraCollege
-								STOP_4077, // ++
-								STOP_WELLAND, // Welland Bus Terminal
-						})) //
-				.compileBothTripSort());
-		map2.put(11l, new RouteTripSpec(11l, //
-				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, DOWNTOWN_TERMINAL, //
-				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, HOSPITAL) //
-				.addTripSort(MDirectionType.NORTH.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_4047, // King St & Fourth St #Hospital
-								STOP_4198, // ++
-								STOP_WELLAND, // Welland Bus Terminal
-						})) //
-				.addTripSort(MDirectionType.SOUTH.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_WELLAND, // Welland Bus Terminal
-								STOP_4029, // ++
-								STOP_4047, // King St & Fourth St #Hospital
-						})) //
-				.compileBothTripSort());
-		map2.put(215L, new RouteTripSpec(215L, // R_WE_NOTL Niagara-on-the-Lake Link
-				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, WELLAND, //
-				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, NOTL) //
-				.addTripSort(MDirectionType.NORTH.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_GLND_CMPS, // 135 Taylor Rd N.O.T.L.
-								STOP_4010, // ++
-								STOP_WIND_CAMP, // Woodlawn Road #NiagaraCollege
-						})) //
-				.addTripSort(MDirectionType.SOUTH.intValue(), //
-						Arrays.asList(new String[] { //
-						STOP_WIND_CAMP, // Woodlawn Road #NiagaraCollege
-								STOP_4004, // ++
-								STOP_GLND_CMPS, // 135 Taylor Rd N.O.T.L.
-						})) //
-				.compileBothTripSort());
-		map2.put(214L, new RouteTripSpec(214L, // R_WESC Brock Link
-				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, NIAGARA_COLLEGE, //
+		map2.put(23L, new RouteTripSpec(23L, //
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Niagara College", //
 				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Brock U") //
 				.addTripSort(MDirectionType.NORTH.intValue(), //
 						Arrays.asList(new String[] { //
-						STOP_BRU, // Brock University
-								STOP_4010, // ++
-								STOP_WIND_CAMP, // Woodlawn Road #NiagaraCollege
+						"BRU", // Brock University
+								"4010", // ++
+								"WlndCamp", // Woodlawn Road #NiagaraCollege
 						})) //
 				.addTripSort(MDirectionType.SOUTH.intValue(), //
 						Arrays.asList(new String[] { //
-						STOP_WIND_CAMP, // Woodlawn Road #NiagaraCollege
-								STOP_4004, // ++
-								STOP_BRU, // Brock University
+						"WlndCamp", // Woodlawn Road #NiagaraCollege
+								"4004", // ++
+								"BRU", // Brock University
 						})) //
 				.compileBothTripSort());
-		map2.put(100L, new RouteTripSpec(100L, // Port Colborne - Welland Link
-				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, WELLAND, //
-				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, PORT_COLBORNE) //
+		map2.put(25L, new RouteTripSpec(25L, //
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Welland", //
+				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Port Colborne") //
 				.addTripSort(MDirectionType.NORTH.intValue(), //
 						Arrays.asList(new String[] { //
-						STOP_PCH, // Port Colborne City Hall
-								STOP_3076, // ++
-								STOP_WIND_CAMP, // Woodlawn Road #NiagaraCollege
+						"PCH", // Port Colborne City Hall
+								"3076", // ++
+								"Welland", // Welland Bus Terminal
 						})) //
 				.addTripSort(MDirectionType.SOUTH.intValue(), //
 						Arrays.asList(new String[] { //
-						STOP_WIND_CAMP, // Woodlawn Road #NiagaraCollege
-								STOP_4181, // ++
-								STOP_PCH, // Port Colborne City Hall
+						"Welland", // Welland Bus Terminal
+								"4181", // ++
+								"PCH", // Port Colborne City Hall
 						})) //
 				.compileBothTripSort());
-		map2.put(101L, new RouteTripSpec(101L, // Port Colborne 1 East
-				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, COLBORNE_MC_RAE, //
-				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, CITY_HALL) //
+		map2.put(34L, new RouteTripSpec(34L, //
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Welland", //
+				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "NOTL") //
 				.addTripSort(MDirectionType.NORTH.intValue(), //
 						Arrays.asList(new String[] { //
-						STOP_PCH, // Port Colborne City Hall
-								STOP_3051, // ++
-								STOP_3066, // Flag Stop - Colborne St & MacRae
+						"GlndCmps", // 135 Taylor Rd N.O.T.L.
+								"4010", // ++
+								"WlndCamp", // Woodlawn Road #NiagaraCollege
 						})) //
 				.addTripSort(MDirectionType.SOUTH.intValue(), //
 						Arrays.asList(new String[] { //
-						STOP_3066, // Flag Stop - Colborne St & MacRae
-								STOP_3071, // ++
-								STOP_PCH, // Port Colborne City Hall
+						"WlndCamp", // Woodlawn Road #NiagaraCollege
+								"4004", // ++
+								"GlndCmps", // 135 Taylor Rd N.O.T.L.
 						})) //
 				.compileBothTripSort());
-		map2.put(102L, new RouteTripSpec(102L, // Port Colborne 2 West
-				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, PC_MALL, //
-				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, CITY_HALL) //
+		map2.put(501L, new RouteTripSpec(501L, //
+				MDirectionType.EAST.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Downtown Terminal", //
+				MDirectionType.WEST.intValue(), MTrip.HEADSIGN_TYPE_STRING, "St George / Roach") //
+				.addTripSort(MDirectionType.EAST.intValue(), //
+						Arrays.asList(new String[] { //
+						"SGR", // St. George St & Roach Av
+								"4046", // ++
+								"Welland", // Welland Bus Terminal
+						})) //
+				.addTripSort(MDirectionType.WEST.intValue(), //
+						Arrays.asList(new String[] { //
+						"Welland", // Welland Bus Terminal
+								"LIO", // ++
+								"SGR", // St. George St & Roach Av
+						})) //
+				.compileBothTripSort());
+		map2.put(502L, new RouteTripSpec(502L, //
+				MDirectionType.EAST.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Downtown Terminal", //
+				MDirectionType.WEST.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Niagara College") //
+				.addTripSort(MDirectionType.EAST.intValue(), //
+						Arrays.asList(new String[] { //
+						"NCC", // Niagara College Welland - Chippa
+								"4078", // ++
+								"Welland", // Welland Bus Terminal
+						})) //
+				.addTripSort(MDirectionType.WEST.intValue(), //
+						Arrays.asList(new String[] { //
+						"Welland", // Welland Bus Terminal
+								"4061", // ++
+								"NCC", // Niagara College Welland - Chippa
+						})) //
+				.compileBothTripSort());
+		map2.put(503L, new RouteTripSpec(503L, //
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Niagara College", //
+				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Downtown Terminal") //
 				.addTripSort(MDirectionType.NORTH.intValue(), //
 						Arrays.asList(new String[] { //
-						STOP_PCH, // Port Colborne City Hall
-								STOP_3031, // ++
-								STOP_3005, // Flag Stop - Port Colborne Mall
+						"Welland", // Welland Bus Terminal
+								"FIN", // ++
+								"WlndCamp", // Woodlawn Road #NiagaraCollege
 						})) //
 				.addTripSort(MDirectionType.SOUTH.intValue(), //
 						Arrays.asList(new String[] { //
-						STOP_3005, // Flag Stop - Port Colborne Mall
-								STOP_3015, // ++
-								STOP_PCH, // Port Colborne City Hall
+						"WlndCamp", // Woodlawn Road #NiagaraCollege
+								"4102", // ++
+								"Welland", // Welland Bus Terminal
+						})) //
+				.compileBothTripSort());
+		map2.put(504L, new RouteTripSpec(504L, //
+				MDirectionType.EAST.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Downtown Terminal", //
+				MDirectionType.WEST.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Woodlawn / S Pelham") //
+				.addTripSort(MDirectionType.EAST.intValue(), //
+						Arrays.asList(new String[] { //
+						"WOS", // Woodlawn Rd & South Pelham Rd
+								"AQE", // ++
+								"Welland", // Welland Bus Terminal
+						})) //
+				.addTripSort(MDirectionType.WEST.intValue(), //
+						Arrays.asList(new String[] { //
+						"Welland", // Welland Bus Terminal
+								"4111", // ++
+								"WOS", // Woodlawn Rd & South Pelham Rd
+						})) //
+				.compileBothTripSort());
+		map2.put(505L, new RouteTripSpec(505L, //
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Downtown Terminal", //
+				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Community Living") //
+				.addTripSort(MDirectionType.NORTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"WPC", // Welland Pelham Community Living
+								"4165", // ++
+								"Welland", // Welland Bus Terminal
+						})) //
+				.addTripSort(MDirectionType.SOUTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"Welland", // Welland Bus Terminal
+								"4146", // ++
+								"WPC", // Welland Pelham Community Living
+						})) //
+				.compileBothTripSort());
+		map2.put(506L, new RouteTripSpec(506L, //
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Downtown Terminal", //
+				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Southworth / Gordon") //
+				.addTripSort(MDirectionType.NORTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"4191", // Gordon St & Southworth St
+								"4205", // ++
+								"Welland", // Welland Bus Terminal
+						})) //
+				.addTripSort(MDirectionType.SOUTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"Welland", // Welland Bus Terminal
+								"KIO", // ++
+								"4191", // Gordon St & Southworth St
+						})) //
+				.compileBothTripSort());
+		map2.put(508L, new RouteTripSpec(508L, //
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Niagara College", //
+				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Downtown Terminal") //
+				.addTripSort(MDirectionType.NORTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"Welland", // Welland Bus Terminal
+								"4224", // ++
+								"WlndCamp", // Woodlawn Road #NiagaraCollege
+						})) //
+				.addTripSort(MDirectionType.SOUTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"WlndCamp", // Woodlawn Road #NiagaraCollege
+								"4227", // ++
+								"Welland", // Welland Bus Terminal
+						})) //
+				.compileBothTripSort());
+		map2.put(509L, new RouteTripSpec(509L, //
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Seaway Mall", //
+				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Downtown Terminal") //
+				.addTripSort(MDirectionType.NORTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"Welland", // Welland Bus Terminal
+								"4238", // ++
+								"SewayMal", // Seaway Mall
+						})) //
+				.addTripSort(MDirectionType.SOUTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"SewayMal", // Seaway Mall
+								"4249", // ++
+								"Welland", // Welland Bus Terminal
+						})) //
+				.compileBothTripSort());
+		map2.put(510L, new RouteTripSpec(510L, //
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Niagara College", //
+				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Downtown Terminal") //
+				.addTripSort(MDirectionType.NORTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"Welland", // Welland Bus Terminal
+								"4224", // ++
+								"WlndCamp", // Woodlawn Road #NiagaraCollege
+						})) //
+				.addTripSort(MDirectionType.SOUTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"WlndCamp", // Woodlawn Road #NiagaraCollege
+								"4077", // ++
+								"Welland", // Welland Bus Terminal
+						})) //
+				.compileBothTripSort());
+		map2.put(511L, new RouteTripSpec(511L, //
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Downtown Terminal", //
+				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Hospital") //
+				.addTripSort(MDirectionType.NORTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"4047", // King St & Fourth St #Hospital
+								"4198", // ++
+								"Welland", // Welland Bus Terminal
+						})) //
+				.addTripSort(MDirectionType.SOUTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"Welland", // Welland Bus Terminal
+								"4029", // ++
+								"4047", // King St & Fourth St #Hospital
+						})) //
+				.compileBothTripSort());
+		map2.put(701L, new RouteTripSpec(701L, // Port Colborne 1 East
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Colborne / McRae", //
+				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "City Hall") //
+				.addTripSort(MDirectionType.NORTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"PCH", // Port Colborne City Hall
+								"3051", // ++
+								"3066", // Flag Stop - Colborne St & MacRae
+						})) //
+				.addTripSort(MDirectionType.SOUTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"3066", // Flag Stop - Colborne St & MacRae
+								"3071", // ++
+								"PCH", // Port Colborne City Hall
+						})) //
+				.compileBothTripSort());
+		map2.put(702L, new RouteTripSpec(702L, // Port Colborne 2 West
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "PC Mall", //
+				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "City Hall") //
+				.addTripSort(MDirectionType.NORTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"PCH", // Port Colborne City Hall
+								"3031", // ++
+								"3005", // Flag Stop - Port Colborne Mall
+						})) //
+				.addTripSort(MDirectionType.SOUTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"3005", // Flag Stop - Port Colborne Mall
+								"3015", // ++
+								"PCH", // Port Colborne City Hall
 						})) //
 				.compileBothTripSort());
 		ALL_ROUTE_TRIPS2 = map2;
+	}
+
+	public static final Pattern STARTS_WITH_WE_A00_ = Pattern.compile("((^){1}(we\\_[A-Z]{1}[\\d]{2}\\_(stop)?))", Pattern.CASE_INSENSITIVE);
+
+	@Override
+	public String cleanStopOriginalId(String gStopId) {
+		gStopId = STARTS_WITH_WE_A00_.matcher(gStopId).replaceAll(StringUtils.EMPTY);
+		return gStopId;
 	}
 
 	@Override
@@ -623,16 +556,9 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 		if (stopCode == null || stopCode.length() == 0 || ZERO_0.equals(stopCode)) {
 			stopCode = gStop.getStopId();
 		}
-		stopCode = PRE_STOP_ID.matcher(stopCode).replaceAll(StringUtils.EMPTY);
+		stopCode = STARTS_WITH_WE_A00_.matcher(stopCode).replaceAll(StringUtils.EMPTY);
 		return stopCode;
 	}
-
-	private static final Pattern PRE_STOP_ID = Pattern.compile("(" //
-			+ STOP_ + "Stop" //
-			+ "|" //
-			+ STOP_ //
-			+ ")", //
-			Pattern.CASE_INSENSITIVE);
 
 	@Override
 	public int getStopId(GStop gStop) {
@@ -640,7 +566,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 		if (stopCode == null || stopCode.length() == 0 || ZERO_0.equals(stopCode)) {
 			stopCode = gStop.getStopId();
 		}
-		stopCode = PRE_STOP_ID.matcher(stopCode).replaceAll(StringUtils.EMPTY);
+		stopCode = STARTS_WITH_WE_A00_.matcher(stopCode).replaceAll(StringUtils.EMPTY);
 		if (Utils.isDigitsOnly(stopCode)) {
 			return Integer.parseInt(stopCode); // using stop code as stop ID
 		}
