@@ -179,6 +179,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 			case 506: return "19B5F1";
 			case 508: return "EC008C";
 			case 509: return "127BCA";
+			case 599: return null; // TODO
 			case 510: return "ED1C24";
 			case 511: return "2E3192";
 			case 701: return "ED1C24";
@@ -319,6 +320,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 				.addTripSort(MDirectionType.SOUTH.intValue(), //
 						Arrays.asList(new String[] { //
 						"Welland", // Welland Bus Terminal
+								"4145", // ++
 								"4146", // ++
 								"WPC", // Welland Pelham Community Living
 						})) //
@@ -403,6 +405,23 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 								"4047", // King St & Fourth St #Hospital
 						})) //
 				.compileBothTripSort());
+		map2.put(599L, new RouteTripSpec(599L, //
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Seaway Mall", //
+				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Downtown Terminal") //
+				.addTripSort(MDirectionType.NORTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"Welland", // Welland Bus Terminal
+								"Welland", // Welland Bus Terminal
+								"SewayMal", // Seaway Mall
+								"SewayMal", // Seaway Mall
+						})) //
+				.addTripSort(MDirectionType.SOUTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"SewayMal", // Seaway Mall
+								"4229", // ++
+								"Welland", // Welland Bus Terminal
+						})) //
+				.compileBothTripSort());
 		map2.put(701L, new RouteTripSpec(701L, // Port Colborne 1 East
 				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Colborne / McRae", //
 				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "City Hall") //
@@ -438,7 +457,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 		ALL_ROUTE_TRIPS2 = map2;
 	}
 
-	public static final Pattern STARTS_WITH_WE_A00_ = Pattern.compile("((^){1}(we\\_[A-Z]{1}[\\d]{2}\\_(stop)?))", Pattern.CASE_INSENSITIVE);
+	public static final Pattern STARTS_WITH_WE_A00_ = Pattern.compile("((^){1}(we\\_[A-Z]{1}[\\d]{2}(\\_)?(stop)?))", Pattern.CASE_INSENSITIVE);
 
 	@Override
 	public String cleanStopOriginalId(String gStopId) {
