@@ -250,13 +250,17 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 				.addTripSort(MDirectionType.EAST.intValue(), //
 						Arrays.asList(new String[] { //
 						"SGR", // St. George St & Roach Av
+								"4039", // ++
 								"4046", // ++
 								"Welland", // Welland Bus Terminal
 						})) //
 				.addTripSort(MDirectionType.WEST.intValue(), //
 						Arrays.asList(new String[] { //
 						"Welland", // Welland Bus Terminal
+								"4024", // ++
 								"LIO", // ++
+								"4025", // ++
+								"4038", // ++
 								"SGR", // St. George St & Roach Av
 						})) //
 				.compileBothTripSort());
@@ -266,6 +270,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 				.addTripSort(MDirectionType.EAST.intValue(), //
 						Arrays.asList(new String[] { //
 						"NCC", // Niagara College Welland - Chippa
+								"4071", // ++
 								"4078", // ++
 								"Welland", // Welland Bus Terminal
 						})) //
@@ -273,6 +278,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 						Arrays.asList(new String[] { //
 						"Welland", // Welland Bus Terminal
 								"4061", // ++
+								"4070", // ++
 								"NCC", // Niagara College Welland - Chippa
 						})) //
 				.compileBothTripSort());
@@ -282,7 +288,9 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 				.addTripSort(MDirectionType.NORTH.intValue(), //
 						Arrays.asList(new String[] { //
 						"Welland", // Welland Bus Terminal
+								"4088", // ++
 								"FIN", // ++
+								"4089", // ++
 								"WlndCamp", // Woodlawn Road #NiagaraCollege
 						})) //
 				.addTripSort(MDirectionType.SOUTH.intValue(), //
@@ -298,13 +306,17 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 				.addTripSort(MDirectionType.EAST.intValue(), //
 						Arrays.asList(new String[] { //
 						"WOS", // Woodlawn Rd & South Pelham Rd
+								"4122", // ++
+								"4133", // ++
 								"AQE", // ++
+								"4134", // ++
 								"Welland", // Welland Bus Terminal
 						})) //
 				.addTripSort(MDirectionType.WEST.intValue(), //
 						Arrays.asList(new String[] { //
 						"Welland", // Welland Bus Terminal
 								"4111", // ++
+								"4121", // ++
 								"WOS", // Woodlawn Rd & South Pelham Rd
 						})) //
 				.compileBothTripSort());
@@ -314,6 +326,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 				.addTripSort(MDirectionType.NORTH.intValue(), //
 						Arrays.asList(new String[] { //
 						"WPC", // Welland Pelham Community Living
+								"4154", // ++
 								"4165", // ++
 								"Welland", // Welland Bus Terminal
 						})) //
@@ -322,6 +335,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 						"Welland", // Welland Bus Terminal
 								"4145", // ++
 								"4146", // ++
+								"4153", // ++
 								"WPC", // Welland Pelham Community Living
 						})) //
 				.compileBothTripSort());
@@ -337,7 +351,9 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 				.addTripSort(MDirectionType.SOUTH.intValue(), //
 						Arrays.asList(new String[] { //
 						"Welland", // Welland Bus Terminal
+								"4182", // ++
 								"KIO", // ++
+								"4183", // ++
 								"4191", // Gordon St & Southworth St
 						})) //
 				.compileBothTripSort());
