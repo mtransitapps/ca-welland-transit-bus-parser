@@ -87,9 +87,12 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 	@Override
 	public boolean excludeRoute(GRoute gRoute) {
 		if (!gRoute.getAgencyId().startsWith("WE_") //
-				&& !gRoute.getAgencyId().startsWith("Wel_")) {
+				&& !gRoute.getAgencyId().startsWith("Wel_") //
+				&& !gRoute.getAgencyId().startsWith("WEL_")) {
 			return true; // exclude
 		}
+		if (gRoute.getRouteLongName().startsWith("NRT - ")) {
+			return true; // exclude Niagara Region Transit buses
 		}
 		return super.excludeRoute(gRoute);
 	}
@@ -358,33 +361,34 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 						})) //
 				.compileBothTripSort());
 		map2.put(508L, new RouteTripSpec(508L, //
-				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Niagara College", //
-				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Downtown Terminal") //
-				.addTripSort(MDirectionType.NORTH.intValue(), //
-						Arrays.asList(new String[] { //
-						"Welland", // Welland Bus Terminal
-								"4224", // ++
-								"WlndCamp", // Woodlawn Road #NiagaraCollege
-						})) //
-				.addTripSort(MDirectionType.SOUTH.intValue(), //
-						Arrays.asList(new String[] { //
-						"WlndCamp", // Woodlawn Road #NiagaraCollege
-								"4227", // ++
-								"Welland", // Welland Bus Terminal
-						})) //
-				.compileBothTripSort());
-		map2.put(509L, new RouteTripSpec(509L, //
 				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Seaway Mall", //
 				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Downtown Terminal") //
 				.addTripSort(MDirectionType.NORTH.intValue(), //
 						Arrays.asList(new String[] { //
 						"Welland", // Welland Bus Terminal
-								"4238", // ++
+								"4224", // ++
 								"SewayMal", // Seaway Mall
 						})) //
 				.addTripSort(MDirectionType.SOUTH.intValue(), //
 						Arrays.asList(new String[] { //
 						"SewayMal", // Seaway Mall
+								"4227", // ++
+								"Welland", // Welland Bus Terminal
+						})) //
+				.compileBothTripSort());
+		map2.put(509L, new RouteTripSpec(509L, //
+				MDirectionType.NORTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Niagara College", //
+				MDirectionType.SOUTH.intValue(), MTrip.HEADSIGN_TYPE_STRING, "Downtown Terminal") //
+				.addTripSort(MDirectionType.NORTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"Welland", // Welland Bus Terminal
+								"4233", // ++
+								"SewayMal", // Seaway Mall
+								"WlndCamp", // Woodlawn Road #NiagaraCollege
+						})) //
+				.addTripSort(MDirectionType.SOUTH.intValue(), //
+						Arrays.asList(new String[] { //
+						"WlndCamp", // Woodlawn Road #NiagaraCollege
 								"4249", // ++
 								"Welland", // Welland Bus Terminal
 						})) //
