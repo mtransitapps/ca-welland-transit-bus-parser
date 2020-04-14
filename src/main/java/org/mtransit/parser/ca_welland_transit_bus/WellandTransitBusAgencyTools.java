@@ -477,7 +477,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 		ALL_ROUTE_TRIPS2 = map2;
 	}
 
-	public static final Pattern STARTS_WITH_WE_A00_ = Pattern.compile("((^){1}((wel|we)\\_[A-Z]{1}[\\d]{2}(\\_)?(stop)?))", Pattern.CASE_INSENSITIVE);
+	public static final Pattern STARTS_WITH_WE_A00_ = Pattern.compile("((^){1}((wel|we)\\_[A-Z]{1,3}[\\d]{2}(\\_)?(stop)?))", Pattern.CASE_INSENSITIVE);
 
 	@Override
 	public String cleanStopOriginalId(String gStopId) {
