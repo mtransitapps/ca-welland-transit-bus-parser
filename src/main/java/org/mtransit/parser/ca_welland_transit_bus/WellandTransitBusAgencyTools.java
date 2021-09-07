@@ -6,8 +6,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.mtransit.commons.CharUtils;
 import org.mtransit.commons.CleanUtils;
+import org.mtransit.commons.StringUtils;
 import org.mtransit.parser.DefaultAgencyTools;
 import org.mtransit.parser.MTLog;
+import org.mtransit.parser.gtfs.data.GAgency;
 import org.mtransit.parser.gtfs.data.GRoute;
 import org.mtransit.parser.gtfs.data.GStop;
 import org.mtransit.parser.mt.data.MAgency;
@@ -15,11 +17,9 @@ import org.mtransit.parser.mt.data.MAgency;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
-// http://www.niagararegion.ca/government/opendata/data-set.aspx#id=32
-// http://www.niagararegion.ca/government/opendata/data-set.aspx#id=32&tab=data_table&f=xml&r=500&p=1
-// http://maps-dev.niagararegion.ca/GoogleTransit/NiagaraRegionTransit.zip
-// https://www.niagararegion.ca/downloads/transit/NiagaraRegionTransit.zip
-// https://niagaraopendata.ca/dataset/1a1b885e-1a86-415d-99aa-6803a2d8f178/resource/52c8cd46-d976-4d57-990f-e8018bcd27cb/download/gtfs.zip
+// https://niagaraopendata.ca/dataset/niagara-region-transit-gtfs
+// https://maps.niagararegion.ca/googletransit/NiagaraRegionTransit.zip
+// https://niagaraopendata.ca/dataset/1a1b885e-1a86-415d-99aa-6803a2d8f178/resource/f7dbcaed-f31a-435e-8146-b0efff0b8eb8/download/gtfs.zip
 public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 
 	public static void main(@NotNull String[] args) {
@@ -35,6 +35,20 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 	@Override
 	public String getAgencyName() {
 		return "Welland Transit";
+	}
+
+	@Override
+	public boolean excludeAgency(@NotNull GAgency gAgency) {
+		//noinspection deprecation
+		final String agencyId = gAgency.getAgencyId();
+		if (!agencyId.startsWith("WE_") //
+				&& !agencyId.startsWith("Wel_") //
+				&& !agencyId.startsWith("WEL_") //
+				&& !agencyId.contains("AllNRT_")
+				&& !agencyId.equals("1")) {
+			return EXCLUDE;
+		}
+		return super.excludeAgency(gAgency);
 	}
 
 	@Override
@@ -130,6 +144,11 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 
 	private static final String AGENCY_COLOR = AGENCY_COLOR_GREEN;
 
+	@Override
+	public boolean defaultAgencyColorEnabled() {
+		return true;
+	}
+
 	@NotNull
 	@Override
 	public String getAgencyColor() {
@@ -140,32 +159,35 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 	@Nullable
 	@Override
 	public String getRouteColor(@NotNull GRoute gRoute) {
-		final String rsnS = gRoute.getRouteShortName();
-		if (!rsnS.isEmpty()
-				&& CharUtils.isDigitsOnly(rsnS)) {
-			final int rsn = Integer.parseInt(rsnS);
-			switch (rsn) {
-			// @formatter:off
-			case 23: return "2B6ABC";
-			case 25: return "9E50AE";
-			case 34: return "2B6ABC";
-			case 501: return "ED1C24";
-			case 502: return "A05843";
-			case 503: return "00A990";
-			case 504: return "2E3192";
-			case 505: return "7B2178";
-			case 506: return "19B5F1";
-			case 508: return "EC008C";
-			case 509: return "127BCA";
-			case 599: return null; // TODO
-			case 510: return "ED1C24";
-			case 511: return "2E3192";
-			case 701: return "ED1C24";
-			case 702: return "127BCA";
-			// @formatter:on
+		if (StringUtils.isEmpty(gRoute.getRouteColor())) {
+			final String rsnS = gRoute.getRouteShortName();
+			if (!rsnS.isEmpty()
+					&& CharUtils.isDigitsOnly(rsnS)) {
+				final int rsn = Integer.parseInt(rsnS);
+				switch (rsn) {
+				// @formatter:off
+				case 23: return "2B6ABC";
+				case 25: return "9E50AE";
+				case 34: return "2B6ABC";
+				case 501: return "ED1C24";
+				case 502: return "A05843";
+				case 503: return "00A990";
+				case 504: return "2E3192";
+				case 505: return "7B2178";
+				case 506: return "19B5F1";
+				case 508: return "EC008C";
+				case 509: return "127BCA";
+				case 599: return null; // TODO
+				case 510: return "ED1C24";
+				case 511: return "2E3192";
+				case 701: return "ED1C24";
+				case 702: return "127BCA";
+				// @formatter:on
+				}
 			}
+			throw new MTLog.Fatal("Unexpected route color for %s!", gRoute);
 		}
-		throw new MTLog.Fatal("Unexpected route color for %s!", gRoute);
+		return super.getRouteColor(gRoute);
 	}
 
 	private static final Pattern STARTS_WITH_WE_A00_ = Pattern.compile(
