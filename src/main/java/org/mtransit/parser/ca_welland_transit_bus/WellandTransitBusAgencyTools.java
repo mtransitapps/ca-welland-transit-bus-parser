@@ -6,7 +6,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.mtransit.commons.CharUtils;
 import org.mtransit.commons.CleanUtils;
-import org.mtransit.commons.StringUtils;
 import org.mtransit.parser.DefaultAgencyTools;
 import org.mtransit.parser.MTLog;
 import org.mtransit.parser.gtfs.data.GAgency;
@@ -14,6 +13,7 @@ import org.mtransit.parser.gtfs.data.GRoute;
 import org.mtransit.parser.gtfs.data.GStop;
 import org.mtransit.parser.mt.data.MAgency;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
@@ -24,6 +24,12 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 
 	public static void main(@NotNull String[] args) {
 		new WellandTransitBusAgencyTools().start(args);
+	}
+
+	@Nullable
+	@Override
+	public List<Locale> getSupportedLanguages() {
+		return LANG_EN;
 	}
 
 	@Override
@@ -85,43 +91,18 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 	}
 
 	@Override
-	public long getRouteId(@NotNull GRoute gRoute) {
-		final String rsnS = gRoute.getRouteShortName();
-		if (!rsnS.isEmpty()
-				&& CharUtils.isDigitsOnly(rsnS)) {
-			return Long.parseLong(rsnS); // using route short name as route ID
-		}
-		throw new MTLog.Fatal("Unexpected route ID for %s!", gRoute);
+	public boolean defaultRouteIdEnabled() {
+		return true;
 	}
 
-	private static final String NOTL = "NOTL";
-	private static final String PC1EAST = "PC1";
-	private static final String PC2WEST = "PC2";
-	private static final String PCL = "PCL";
-	private static final String BL = "BL";
-
-	@Nullable
 	@Override
-	public String getRouteShortName(@NotNull GRoute gRoute) {
-		if ("NOTL Link".equals(gRoute.getRouteLongName())) {
-			return NOTL;
-		} else if ("Port Colborne East Side - Rt. 1".equals(gRoute.getRouteLongName())) {
-			return PC1EAST;
-		} else if ("Port Colborne West Side - Rt 2".equals(gRoute.getRouteLongName())) {
-			return PC2WEST;
-		} else if ("Port Colborne Link".equals(gRoute.getRouteLongName())) {
-			return PCL;
-		} else //noinspection deprecation
-			if ("College-Brock".equals(gRoute.getRouteId())) {
-				return BL;
-			} else {
-				final String rnsS = gRoute.getRouteShortName();
-				if (!rnsS.isEmpty()
-						&& CharUtils.isDigitsOnly(rnsS)) {
-					return rnsS;
-				}
-			}
-		throw new MTLog.Fatal("Unexpected route short name for %s!", gRoute);
+	public boolean useRouteShortNameForRouteId() {
+		return true;
+	}
+
+	@Override
+	public boolean defaultRouteLongNameEnabled() {
+		return true;
 	}
 
 	private static final Pattern POINT = Pattern.compile("((^|\\W)([\\w])\\.(\\W|$))", Pattern.CASE_INSENSITIVE);
@@ -158,36 +139,28 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 	@SuppressWarnings("DuplicateBranchesInSwitch")
 	@Nullable
 	@Override
-	public String getRouteColor(@NotNull GRoute gRoute) {
-		if (StringUtils.isEmpty(gRoute.getRouteColor())) {
-			final String rsnS = gRoute.getRouteShortName();
-			if (!rsnS.isEmpty()
-					&& CharUtils.isDigitsOnly(rsnS)) {
-				final int rsn = Integer.parseInt(rsnS);
-				switch (rsn) {
-				// @formatter:off
-				case 23: return "2B6ABC";
-				case 25: return "9E50AE";
-				case 34: return "2B6ABC";
-				case 501: return "ED1C24";
-				case 502: return "A05843";
-				case 503: return "00A990";
-				case 504: return "2E3192";
-				case 505: return "7B2178";
-				case 506: return "19B5F1";
-				case 508: return "EC008C";
-				case 509: return "127BCA";
-				case 599: return null; // TODO
-				case 510: return "ED1C24";
-				case 511: return "2E3192";
-				case 701: return "ED1C24";
-				case 702: return "127BCA";
-				// @formatter:on
-				}
-			}
-			throw new MTLog.Fatal("Unexpected route color for %s!", gRoute);
+	public String provideMissingRouteColor(@NotNull GRoute gRoute) {
+		switch (gRoute.getRouteShortName()) {
+		// @formatter:off
+		case "23": return "2B6ABC";
+		case "25": return "9E50AE";
+		case "34": return "2B6ABC";
+		case "501": return "ED1C24";
+		case "502": return "A05843";
+		case "503": return "00A990";
+		case "504": return "2E3192";
+		case "505": return "7B2178";
+		case "506": return "19B5F1";
+		case "508": return "EC008C";
+		case "509": return "127BCA";
+		case "599": return null; // TODO
+		case "510": return "ED1C24";
+		case "511": return "2E3192";
+		case "701": return "ED1C24";
+		case "702": return "127BCA";
+		// @formatter:on
 		}
-		return super.getRouteColor(gRoute);
+		throw new MTLog.Fatal("Unexpected route color for %s!", gRoute);
 	}
 
 	private static final Pattern STARTS_WITH_WE_A00_ = Pattern.compile(
@@ -210,7 +183,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 	@NotNull
 	@Override
 	public String cleanTripHeadsign(@NotNull String tripHeadsign) {
-		tripHeadsign = CleanUtils.toLowerCaseUpperCaseWords(Locale.ENGLISH, tripHeadsign);
+		tripHeadsign = CleanUtils.toLowerCaseUpperCaseWords(getFirstLanguageNN(), tripHeadsign);
 		tripHeadsign = CleanUtils.CLEAN_AND.matcher(tripHeadsign).replaceAll(CleanUtils.CLEAN_AND_REPLACEMENT);
 		tripHeadsign = CleanUtils.cleanNumbers(tripHeadsign);
 		tripHeadsign = CleanUtils.cleanStreetTypes(tripHeadsign);
@@ -233,7 +206,7 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 	@NotNull
 	@Override
 	public String cleanStopName(@NotNull String gStopName) {
-		gStopName = CleanUtils.toLowerCaseUpperCaseWords(Locale.ENGLISH, gStopName);
+		gStopName = CleanUtils.toLowerCaseUpperCaseWords(getFirstLanguageNN(), gStopName);
 		gStopName = STARTS_WITH_FLAG_STOP.matcher(gStopName).replaceAll(EMPTY);
 		gStopName = FIX_AVENUE.matcher(gStopName).replaceAll(FIX_AVENUE_REPLACEMENT);
 		gStopName = FIX_DRIVE.matcher(gStopName).replaceAll(FIX_DRIVE_REPLACEMENT);
@@ -248,13 +221,6 @@ public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 	}
 
 	private static final String ZERO_0 = "0";
-
-	private static final Pattern DIGITS = Pattern.compile("[\\d]+");
-
-	private static final String PC2 = "PC_";
-	private static final String PC = "PC";
-	private static final String WE2 = "WE_";
-	private static final String WE = "WE";
 
 	@NotNull
 	@Override
