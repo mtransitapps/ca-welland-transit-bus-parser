@@ -18,7 +18,6 @@ import java.util.Locale;
 import java.util.regex.Pattern;
 
 // https://niagaraopendata.ca/dataset/niagara-region-transit-gtfs
-// OLD: https://maps.niagararegion.ca/googletransit/NiagaraRegionTransit.zip
 public class WellandTransitBusAgencyTools extends DefaultAgencyTools {
 
 	public static void main(@NotNull String[] args) {
